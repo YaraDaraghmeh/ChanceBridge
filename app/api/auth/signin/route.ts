@@ -21,12 +21,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
     }
 
+
 const token = jwt.sign(
   { 
     id: user._id, 
     email: user.email, 
     role: user.role, 
-    username: user.username 
+    username: user.username  
   }, 
   SECRET_KEY, 
   { expiresIn: "7d" }
