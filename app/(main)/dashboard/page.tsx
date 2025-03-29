@@ -1,68 +1,141 @@
 "use client";
+import ImageSlider from '@/components/ImageSlider';
 import TitleOfSection from '@/components/TitleOfSection';
 import UserCollections from '@/components/UserCollections';
+import { BadgeCheck, Book, BookMarked, BookOpenText, ClipboardList, ScrollText, Users } from 'lucide-react';
 import React from 'react'
+import ReactStars from 'react-stars';
+const listsOfAssignments:string[]=['nameAssignment','supervisor','startData','endData','status']
+const userCollections = [{
+  icon:<Users/>,
+  name:'supervisors',
+  href:'',
+  numpers:6
+},{
+  icon:<ScrollText/>,
+  name:'activties',
+  href:'',
+  numpers:9
+},
+{
+  icon:<BookMarked/>,
+  name:'ceritifactions',
+  href:'',
+  numpers:5 
+}]
+const userCertifications=[{
+  role:'NextJs Boodcap',
+  supervisor:'hadeel alwadia',
+  graduationDate:'2/3/2024',
+  rate:4
 
-const userCollections = [{}, {}, {}]
-const userCertifications=[{},{},{},{}]
-const titlesOfTable=[{},{},{},{}]
-const userActivites=[{},{}]
+},{
+  role:'NextJs Boodcap',
+  supervisor:'hadeel alwadia',
+  graduationDate:'2/3/2024',
+  rate:4
+},{
+  role:'NextJs Boodcap',
+  supervisor:'hadeel alwadia',
+  graduationDate:'2/3/2024',
+  rate:4
+},{
+  role:'NextJs Boodcap',
+  supervisor:'hadeel alwadia',
+  graduationDate:'2/3/2024',
+  rate:4
+}]
+const listsOfTable=['role','supervisor','graduation','rate']
+const userActivites=[{
+  name:'creating landing page with Nextjs',
+  startData:'2-3-2013',
+  endData:'4-5-2010',
+  status:'panding'
+},{
+  name:'creating landing page with Nextjs',
+  startData:'2-3-2013',
+  endData:'4-5-2010',
+  status:'completed'
+},
+{
+  name:'creating landing page with Nextjs',
+  startData:'2-3-2013',
+  endData:'4-5-2010',
+  status:'inProgress'
+}]
 const userJops=[{},{},{}]
-const assignmentsUser=[{},{},{}]
+const assignmentsUser=[{
+  name:'create auth form with mongodb',
+  supervisor:'hadeelalwadia',
+  startDate:'22-4-2019',
+  endDate:'23-4-2020',
+  status:'panding'
+},{
+  name:'create auth form with mongodb',
+  supervisor:'hadeelalwadia',
+  startDate:'22-4-2019',
+  endDate:'23-4-2020',
+  status:'panding'
+},{
+  name:'create auth form with mongodb',
+  supervisor:'hadeelalwadia',
+  startDate:'22-4-2019',
+  endDate:'23-4-2020',
+  status:'panding'
+}]
+
 
 const page = () => {
   return (
-    <main className="w-full md:w-[calc(100%-256px)]  bg-gray-200 min-h-screen transition-all main">
+    <main className="w-full md:w-[calc(100%-256px)] bg-gray-50 dark:bg-gray-800 min-h-screen transition-all main">
 
       {/* Content */}
       <div className="p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {
             userCollections.map(col =>
-              <UserCollections />
+              <UserCollections {...col} />
             )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <div className="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
                 <div className="relative w-full max-w-full flex-grow flex-1">
-                <TitleOfSection/>
+                <TitleOfSection title='certifications' icon={<BookMarked/>}/>
               <div className="block w-full overflow-x-auto">
                 <table className="items-center w-full bg-transparent border-collapse">
                   <thead>
                     <tr>
-                      {titlesOfTable.map(title=>
+                      {listsOfTable.map(list=>
                             <th className="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                            Role
+                            {list}
                           </th>
                       )}
-                  
-            
                     </tr>
                   </thead>
                   <tbody>
-                 {userCertifications.map(cert=> 
+                 {userCertifications.map(certifiction=> 
                        <tr className="text-gray-700 dark:text-gray-100">
                       <th className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        Administrator
+                         {certifiction.role}
                       </th>
                       <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        1
+                        {certifiction.supervisor}
+                      </td>
+                  
+                      <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {certifiction.graduationDate}
                       </td>
                       <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div className="flex items-center">
-                          <span className="mr-2">70%</span>
-                          <div className="relative w-full">
-                            <div className="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                              <div
-                                style={{ width: "70%" }}
-                                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>)}
+                      <ReactStars
+                      
+        count={5} // Number of stars
+        value={certifiction.rate} // Current rating
+        size={24} // Size of the stars
+        color2={'#ffd700'} // Color of filled stars
+      />                      </td>
+                    </tr>
+                  )}
 
             
                   </tbody>
@@ -70,12 +143,12 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-           <TitleOfSection/>
+          <div className="bg-gray-50 dark:bg-gray-800 border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
+           <TitleOfSection title={'activites'} icon={<ScrollText/>}/>
             <div className="overflow-hidden">
               <table className="w-full min-w-[540px]">
                 <tbody>
-                  {userActivites.map(act=>
+                  {userActivites.map(activity=>
                         <tr>
                         <td className="py-2 px-4 border-b border-b-gray-50">
                           <div className="flex items-center">
@@ -83,57 +156,25 @@ const page = () => {
                               href="#"
                               className="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate"
                             >
-                              Lorem Ipsum
+
+                              {activity.name}
                             </a>
                           </div>
                         </td>
                         <td className="py-2 px-4 border-b border-b-gray-50">
                           <span className="text-[13px] font-medium text-gray-400">
-                            02-02-2024
+                            {activity.startData}
                           </span>
                         </td>
                         <td className="py-2 px-4 border-b border-b-gray-50">
                           <span className="text-[13px] font-medium text-gray-400">
-                            17.45
+                            {activity.endData}
                           </span>
                         </td>
                         <td className="py-2 px-4 border-b border-b-gray-50">
-                          <div className="dropdown">
-                            <button
-                              type="button"
-                              className="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"
-                            >
-                              <i className="ri-more-2-fill" />
-                            </button>
-                            <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                              <li>
-                                <a
-                                  href="#"
-                                  className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                >
-                                  Profile
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                >
-                                  Settings
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                >
-                                  Logout
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
+                          <BadgeCheck size={20} color={`${activity.status==='completed'?'green':activity.status==='panding'?'yellow':'red'}`}/>
                         </td>
-                      </tr>
+</tr>
                   )}
               
 
@@ -143,9 +184,13 @@ const page = () => {
             </div>
           </div>
         </div>
+
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <div className="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-            <TitleOfSection/>
+          <div className="bg-gray-50 dark:bg-gray-800 border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+            <TitleOfSection title={'courses'} icon={<BookOpenText
+            />}/>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
                {userJops.map(jop=>
                     <div className="rounded-md border border-dashed border-gray-200 p-4">
@@ -158,26 +203,28 @@ const page = () => {
                     <span className="text-gray-400 text-sm">Active</span>
                   </div>
                )}
+               
             </div>
-            <div>
-              <canvas id="order-chart" />
-            </div>
+          <ImageSlider/>
+
           </div>
-          <div className="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-        <TitleOfSection/>
+
+          <div className="bg-gray-50 dark:bg-gray-800 border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
+          <TitleOfSection title={'assignments'} icon={<ClipboardList/>}/>
             <div className="overflow-x-auto ">
               <table className="w-full min-w-[460px]">
                 <thead>
                   <tr>
-                    {titlesOfTable.map(title=>
+                    {listsOfAssignments.map(title=>
                     <th className="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                      Earning
+                      {title}
                     </th>)}
                   </tr>
                 </thead>
                 <tbody>
-                    {assignmentsUser.map(ass=>
-                    <tr>
+                    {assignmentsUser.map(assignment=>
+
+                    <tr className='text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate '>
                              <td className="py-2 px-4 border-b border-b-gray-50">
                              <div className="flex items-center">
                                <img
@@ -189,13 +236,27 @@ const page = () => {
                                  href="#"
                                  className="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate"
                                >
-                                 Create landing page
+                                {assignment.name}
                                </a>
                              </div>
                            </td>
+                           <td className='text-center' >
+                            {assignment.supervisor}
+                           </td>
+                           <td className='text-center'>
+                            {assignment.startDate}
+                           </td>
+                           <td className='text-center'>
+                            {assignment.endDate}
+                           </td>
+                           <td >
+                           <BadgeCheck className=' px-reight'  size={20} color={`${assignment.status==='completed'?'green':assignment.status==='panding'?'yellow':'red'}`}/>
+                           </td>
+
                            </tr>
                     )}
-             
+
+
                 </tbody>
               </table>
             </div>

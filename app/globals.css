@@ -6,3 +6,7 @@
 .height-full-vh{
 height: 100vh;
 }
+.icon-container svg {
+    width: 20px;  /* Set desired size */
+    height: 20px;
+  }
