@@ -3,3 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.height-full-vh{
+height: 100vh;
+}
