@@ -1,0 +1,155 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
+  .gradientText {
+    font-family: "Tilt Neon", sans-serif;
+    background-image: linear-gradient(
+      90deg,
+      rgb(139, 192, 74) 0%,
+      rgb(72, 187, 120) 30%,
+      rgb(66, 153, 225) 50%,
+      rgb(159, 122, 234) 70%,
+      rgb(237, 100, 166) 100%
+    );
+    color: transparent;
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  
+  .item {
+    animation: fadeIn 0.5s linear 1 forwards;
+    animation-delay: calc(0.2s * var(--i));
+    opacity: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Hover effect for the shape items */
+  .item:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  
+  /* Light theme specific colors for the shapes */
+  .lightBlue {
+    background-color: #4299e1 !important; /* Bright blue */
+  }
+  
+  .lightGreen {
+    background-color: #48bb78 !important; /* Bright green */
+  }
+  
+  .lightYellow {
+    background-color: #ecc94b !important; /* Bright yellow */
+  }
+  
+  .lightPink {
+    background-color: #ed64a6 !important; /* Bright pink */
+  }
+  
+  .lightIndigo {
+    background-color: #667eea !important; /* Bright indigo */
+  }
+  
+  .lightPurple {
+    background-color: #9f7aea !important; /* Bright purple */
+  }
+  
+  /* Default dark colors */
+  .item:nth-child(1) {
+    background-color: #67d7e1;
+    border-radius: 50% 50% 0 50%;
+  }
+  
+  .item:nth-child(3) {
+    background-color: #6cc164;
+    border-radius: 50%;
+  }
+  
+  .item:nth-child(6) {
+    background-color: #8071a8;
+    border-radius: 0 50% 50% 50%;
+  }
+  
+  .item:nth-child(8) {
+    background-color: #fe7519;
+    border-radius: 50% 0 0 50%;
+  }
+  
+  .item:nth-child(9) {
+    background-color: #f5bec3;
+    border-radius: 0 50% 50% 0;
+  }
+  
+  .item:nth-child(11) {
+    background-color: #fcd659;
+    border-radius: 50% 0 50% 50%;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes rotation {
+    0% {
+      --gradient-angle: 0deg;
+    }
+    100% {
+      --gradient-angle: 360deg;
+    }
+  }
+  
+  .content::before,
+  .content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      rgb(129, 226, 19),
+      rgb(72, 187, 120),
+      rgb(66, 153, 225),
+      rgb(159, 122, 234),
+      rgb(237, 100, 166),
+      rgb(159, 122, 234),
+      rgb(66, 153, 225),
+      rgb(72, 187, 120),
+      rgb(129, 226, 19)
+    );
+    animation: rotation 8s linear infinite;
+  }
+  
+  .content::after {
+    filter: blur(30px);
+  }
+  
+  /* Additional global styles */
+  :global(.font-tilt-neon) {
+    font-family: "Tilt Neon", sans-serif;
+  }
+  
+  :global(.font-nunito) {
+    font-family: "Nunito", sans-serif;
+  }
+  
+  :global(.no-scrollbar) {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  :global(.no-scrollbar::-webkit-scrollbar) {
+    display: none;
+  }
