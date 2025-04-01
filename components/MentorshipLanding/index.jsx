@@ -8,6 +8,8 @@ import { initializeTiltEffect } from './utils/tiltEffects';
 import { startTypingAnimation, initializeScrollRevealAnimations } from './utils/animationUtils';
 import styles from './styles/MentorshipLanding.module.css';
 import StatsSection from '../MentorshipLanding/StatsSection';
+import TestimonialsSection from '../MentorshipLanding/TestimonialsSection';
+import CTASection from '../MentorshipLanding/CTASection';
 const MentorshipLanding = () => {
   const { theme } = useTheme();
   const [subscribed, setSubscribed] = useState(false);
@@ -428,6 +430,8 @@ const MentorshipLanding = () => {
           </li>
         </ul>
       </section>
+      <TestimonialsSection />
+      <CTASection />
     </>
   );
 };
