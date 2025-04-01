@@ -7,7 +7,7 @@ import Head from 'next/head';
 import { initializeTiltEffect } from './utils/tiltEffects';
 import { startTypingAnimation, initializeScrollRevealAnimations } from './utils/animationUtils';
 import styles from './styles/MentorshipLanding.module.css';
-
+import StatsSection from '../MentorshipLanding/StatsSection';
 const MentorshipLanding = () => {
   const { theme } = useTheme();
   const [subscribed, setSubscribed] = useState(false);
@@ -269,7 +269,7 @@ const MentorshipLanding = () => {
           </div>
         </div>
       </section>
-
+      <StatsSection />
       <section id="card-container" className={`flex flex-col items-center justify-center gap-5 w-full min-h-screen ${cardContainerBackground} overflow-hidden py-16 px-4 md:px-12`}>
         <div 
           ref={sliderRef}
