@@ -5,7 +5,7 @@ import { useTheme } from '@/context/ThemeContext';
 import styles from '../MentorshipLanding/styles/MentorshipLanding.module.css';
 import { animateValue } from '../MentorshipLanding/utils/animationUtils';
 
-const CounterCard = ({ icon, endValue, title, duration = 8000 }) => { // Increased duration to 5000ms
+const CounterCard = ({ icon, endValue, title, duration = 9000 }) => { // Increased duration to 5000ms
   const [count, setCount] = useState(0);
   const { theme } = useTheme();
   
