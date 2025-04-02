@@ -6,7 +6,7 @@ const userListMenu=[ {
   
   icon:<Home />,
   name:'dashboard',
-  href:'/'
+  href:'/dashboard'
 
 
 },
@@ -21,26 +21,27 @@ const userListMenu=[ {
 {
   icon:<Users/>,
   name:'supervisors',
-  href:''
+  href:'/supervisors'
 },{
   icon:<ScrollText/>,
   name:'activties',
-  href:''
+  href:'/activites'
 },
 {
   icon:<BookMarked/>,
   name:'ceritifactions',
-  href:''
+  href:'/ceritifactions'
 },
 {
+
   icon:<CalendarDays/>,
   name:'timeTable',
-  href:''
+  href:'/timeTable'
 },
 {
   icon:<ClipboardList/>,
   name:'assignments',
-  href:''
+  href:'/assignments'
 },
 ]
 const personalListMenu=[{

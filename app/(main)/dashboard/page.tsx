@@ -1,4 +1,5 @@
 "use client";
+import ApexChart from '@/components/chart';
 import ImageSlider from '@/components/ImageSlider';
 import TitleOfSection from '@/components/TitleOfSection';
 import UserCollections from '@/components/UserCollections';
@@ -64,6 +65,7 @@ const userActivites=[{
   endData:'4-5-2010',
   status:'inProgress'
 }]
+
 const userJops=[{},{},{}]
 const assignmentsUser=[{
   name:'create auth form with mongodb',
@@ -84,6 +86,9 @@ const assignmentsUser=[{
   endDate:'23-4-2020',
   status:'panding'
 }]
+
+
+const numberOfAppoforDay = [0, 0, 4, 0, 6, 0, 0]
 
 
 const page = () => {
@@ -206,7 +211,7 @@ const page = () => {
                )}
                
             </div>
-          <ImageSlider/>
+            <ApexChart data={numberOfAppoforDay} />
 
           </div>
 
@@ -263,11 +268,13 @@ const page = () => {
             </div>
           </div>
         </div>
+        
       </div>
       {/* End Content */}
     </main>
   )
 }
+
 
 export default page
 
