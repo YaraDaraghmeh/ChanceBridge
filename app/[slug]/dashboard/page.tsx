@@ -45,6 +45,7 @@ const userCertifications=[{
   graduationDate:'2/3/2024',
   rate:4
 }]
+
 const listsOfTable=['role','supervisor','graduation','rate']
 const userActivites=[{
   name:'creating landing page with Nextjs',

@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const images = [
-"/images/cert1.jpeg","/images/cet2.jpeg"
+"/images/ceritifecation.jpeg","/images/cet2.jpeg"
 ];
 
 const ImageSlider = () => {
