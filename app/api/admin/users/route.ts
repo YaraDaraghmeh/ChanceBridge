@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 // Dummy data (Replace this with data from your database)
 const supervisors = [{
@@ -29,10 +30,11 @@ phone: "",
 profileImage: "images/people/profile-picture-4.jpeg"
 }];
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-    res.status(200).json(supervisors);
-  } else {
-    res.status(405).json({ message: "Method Not Allowed" });
+
+export const GET = async (request: NextRequest) => {
+
+    return NextResponse.json(
+      { results: supervisors },
+      { status: 200 }
+    );
   }
-}
