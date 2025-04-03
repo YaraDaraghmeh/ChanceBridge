@@ -7,6 +7,7 @@ import { BadgeCheck, Book, BookMarked, BookOpenText, ClipboardList, ScrollText, 
 import React from 'react'
 import ReactStars from 'react-stars';
 const listsOfAssignments:string[]=['nameAssignment','supervisor','startData','endData','status']
+
 const userCollections = [{
   icon:<Users/>,
   name:'supervisors',
@@ -92,6 +93,7 @@ const numberOfAppoforDay = [0, 0, 4, 0, 6, 0, 0]
 
 
 const page = () => {
+
   return (
     <main className="w-full md:w-[calc(100%-256px)] bg-gray-50 dark:bg-gray-800 min-h-screen transition-all main">
 

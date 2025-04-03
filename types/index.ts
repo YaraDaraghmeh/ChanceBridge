@@ -5,5 +5,6 @@ interface Isupervisor {
     email: string;
     phone: string;
     profileImage: string;
+    rate:number
   }
   export type {Isupervisor}

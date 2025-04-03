@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 // Dummy data (Replace this with data from your database)
-const supervisors :Isupervisor[]= [{
+const courses :Isupervisor[]= [{
   profileImage: 'images/people/profile-picture-1.jpeg',
   id: 0,
   name: "",
@@ -55,7 +55,7 @@ const supervisors :Isupervisor[]= [{
 
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(
-      { results: supervisors },
+      { results: courses },
       { status: 200 }
     );
   }
