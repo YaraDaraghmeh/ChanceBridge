@@ -40,7 +40,8 @@ export default function SignIn() {
       if (!res.ok) throw new Error(data.message);
 
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      console.log({...data.user,role:'supervisor'})
+      localStorage.setItem("user", JSON.stringify({...data.user,role:'supervisor'}));
   
       dispatch({ type: "LOGIN", payload: data.user });
   
