@@ -105,7 +105,6 @@ export default function Header() {
           <Navbar.Link active={path === "/jobPage"} as={"div"}>
             <NavLink href="/jobPage">Join our Team </NavLink>
           </Navbar.Link>
-          
         </Navbar.Collapse>
       </Navbar>
 
