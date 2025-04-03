@@ -66,8 +66,9 @@ const Menu = () => {
       <span className="text-gray-400  font-bold">
         {state.user?.role}
       </span>
-      {userListMenu.map(
-     itemOfMenu=> <li className="mb-1 group">
+      {
+      userListMenu.map(
+     itemOfMenu=> <li className="mb-1 group" key={itemOfMenu.name}>
      <Link
        href={itemOfMenu.href}
        className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
@@ -77,6 +78,15 @@ const Menu = () => {
      </Link>
    </li>
       )}
+      {state.user?.role==='supervisor'&&<li className="mb-1 group">
+     <Link
+       href={'/trainees'}
+       className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
+     >
+       {<Users/>}
+       <span className="text-sm">trainees</span>
+     </Link>
+   </li>}
    
 
    
