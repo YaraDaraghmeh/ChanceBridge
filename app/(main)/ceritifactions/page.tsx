@@ -8,7 +8,7 @@ import Table from '@/components/Table'
 import React from 'react'
 
 const ceritifactions = () => {
-  const {data,error,loading}=useFetch('trainee/ceritifactions')
+  const {data,error,loading}=useFetch('trainee/certifications')
 
   return (
 <>
@@ -16,7 +16,9 @@ const ceritifactions = () => {
 <GlobalLoadingPage/>:
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-6xl  felx items-center justify-center m-14 mx-32 ">
 
-          <Table isDisplayCheckbox={true} columns={['product name','colors','status','']} bodydatatable={data}/>
+          <Table isDisplayCheckbox={true} columns={['name','supervisorName','GarductionYear','avarage']} bodydatatable={data} actionsTable={{
+            delete:()=>{}
+          }}/>
           </div>
 }
 </>

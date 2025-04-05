@@ -22,7 +22,8 @@ console.log(data)
             edit:()=>{},
             delete:()=>{}
           }}
-           isDisplayCheckbox={true} columns={['name','supervisorName','phone','rate','status']} bodydatatable={data.map((item:ICours)=>({...item,
+           isDisplayCheckbox={true} columns={['name','supervisorName','startDate','endDate','phone','rate']} 
+           bodydatatable={data.map((item:ICours)=>({...item,
             rate:<ReactStars/>,
             status: <BadgeCheck size={20} color={`${item.status === 'completed' ? 'green' : item.status === 'panding' ? 'yellow' : 'red'}`} />
           }))}

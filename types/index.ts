@@ -17,10 +17,17 @@ interface ISupervisor {
     endDate: string,
     status:Status
   }
+ interface ICertification{
+     id:string,
+     name:string,
+     supervisorName:string,
+     GarductionYear:string
+     avarage:string
+  }
   interface ICard{
       title:string,date:string,description:string,status:Status
   }
   interface IAssignments extends ICard{
 
   }
-  export type {ISupervisor,Status,IAssignments,ICard,ICours}
+  export type {ISupervisor,Status,IAssignments,ICard,ICours,ICertification}

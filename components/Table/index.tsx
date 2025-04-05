@@ -62,12 +62,12 @@ const Table = ({ isDisplayCheckbox, columns, bodydatatable ,actionsTable}: ITabl
               </td>
             ))}
 
-           <td className='flex gap-3  my-5 '>
+           <td className='flex gap-3  my-5  cursor-pointer'>
            {actionsTable&&Object.keys(actionsTable).map(action=>{
            switch (action) {
             case 'delete':{return <Trash2 color='red'/> }
-            case 'edit':{return <Pencil color='yellow' /> }
-            case 'view':{return <Eye color='green' />}
+            case 'edit':{return <Pencil color='green' /> }
+            case 'view':{return <Eye color='black' />}
 
            
             default:return null
