@@ -1,5 +1,4 @@
 import { ICertification, ISupervisor } from "@/types";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 const certifications: ICertification[] = [
   {

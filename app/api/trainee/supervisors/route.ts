@@ -1,5 +1,4 @@
 import { ISupervisor } from "@/types";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 // Dummy data (Replace this with data from your database)
