@@ -1,75 +1,68 @@
-import React from 'react'
+import React from 'react';
 
-const index = () => {
-    const userActivites=[{}]
-  return (
-    <table className="w-full min-w-[540px]">
-                <tbody>
-                  {userActivites.map(act=>
-                        <tr>
-                        <td className="py-2 px-4 border-b border-b-gray-50">
-                          <div className="flex items-center">
-                            <a
-                              href="#"
-                              className="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate"
-                            >
-                              Lorem Ipsum
-                            </a>
-                          </div>
-                        </td>
-                        <td className="py-2 px-4 border-b border-b-gray-50">
-                          <span className="text-[13px] font-medium text-gray-400">
-                            02-02-2024
-                          </span>
-                        </td>
-                        <td className="py-2 px-4 border-b border-b-gray-50">
-                          <span className="text-[13px] font-medium text-gray-400">
-                            17.45
-                          </span>
-                        </td>
-                        <td className="py-2 px-4 border-b border-b-gray-50">
-                          <div className="dropdown">
-                            <button
-                              type="button"
-                              className="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"
-                            >
-                              <i className="ri-more-2-fill" />
-                            </button>
-                            <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                              <li>
-                                <a
-                                  href="#"
-                                  className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                >
-                                  Profile
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                >
-                                  Settings
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                                >
-                                  Logout
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>
-                  )}
-              
-
-            
-                </tbody>
-              </table>  )
+interface ITable {
+  isDisplayCheckbox: boolean;
+  columns: string[];
+  bodydatatable: Record<string, any>[];
 }
 
-export default index
+const Table = ({ isDisplayCheckbox, columns, bodydatatable }: ITable) => {
+  return (
+    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          {isDisplayCheckbox && (
+            <th scope="col" className="p-4">
+              <div className="flex items-center">
+                <input
+                  id="checkbox-all-search"
+                  type="checkbox"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2"
+                />
+                <label htmlFor="checkbox-all-search" className="sr-only">
+                  Select all
+                </label>
+              </div>
+            </th>
+          )}
+          {columns.map((title, i) => (
+            <th key={i} scope="col" className="px-6 py-3">
+              {title}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {bodydatatable.map((row, rowIndex) => (
+          <tr
+            key={rowIndex}
+            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
+            {isDisplayCheckbox && (
+              <td className="w-4 p-4">
+                <div className="flex items-center">
+                  <input
+                    id={`checkbox-row-${rowIndex}`}
+                    type="checkbox"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2"
+                  />
+                  <label htmlFor={`checkbox-row-${rowIndex}`} className="sr-only">
+                    Select row {rowIndex + 1}
+                  </label>
+                </div>
+              </td>
+            )}
+            
+            {columns.map((col, colIndex) => (
+              <td key={colIndex} className="px-6 py-4">
+                {row[col]?? row[col]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+export default Table;

@@ -1,54 +1,45 @@
-import { Isupervisor } from "@/types";
+import { ICours, ISupervisor } from "@/types";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 // Dummy data (Replace this with data from your database)
-const courses :Isupervisor[]= [{
-  profileImage: 'images/people/profile-picture-1.jpeg',
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  rate: 5
-},{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-2.jpeg",
-  rate: 4
-},
-{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-3.jpeg",
-  rate: 5
-},
-{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-4.jpeg",
-  rate: 4
-},
-{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-5.jpeg",
-  rate: 7
-},
+const courses :ICours[]= [
   {
-    id: 0,
-    name: "",
-    email: "",
-    phone: "",
-    profileImage: "images/people/profile-picture-6.jpeg",
-    rate: 2
+    id: '1',
+    name:'NextJS development',
+    supervisorName: "Dr. Sarah Al-Sharif",
+    phone: "056-123-4567",
+    rate: 5,
+    startDate: "2025-04-01",
+    endDate: "2025-06-30",
+    status: 'panding'
+  },  {
+    id: '1',
+    supervisorName: "Dr. Sarah Al-Sharif",
+    phone: "056-123-4567",
+    rate: 5,
+    startDate: "2025-04-01",
+    endDate: "2025-06-30",
+    status: 'panding',
+    name:'NextJS development',
+  },  {
+    id: '1',
+    supervisorName: "Dr. Sarah Al-Sharif",
+    phone: "056-123-4567",
+    rate: 5,
+    startDate: "2025-04-01",
+    endDate: "2025-06-30",
+    status: 'panding',
+    name:'NextJS development',
+  },  {
+    id: '1',
+    supervisorName: "Dr. Sarah Al-Sharif",
+    phone: "056-123-4567",
+    rate: 5,
+    startDate: "2025-04-01",
+    endDate: "2025-06-30",
+    status: 'completed',
+    name:'NextJS development',
   }];
 
 

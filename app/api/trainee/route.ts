@@ -60,11 +60,9 @@ const traineeCollections={
         endDate:'23-4-2020',
         status:'panding'
       }]
-      
     }
 
   
-  const listsOfTable=['role','supervisor','graduation','rate']
   
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(

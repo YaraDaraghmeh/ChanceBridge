@@ -1,5 +1,5 @@
-
-interface Isupervisor {
+type Status='panding'|'confirmed'|'completed'
+interface ISupervisor {
     id: number;
     name: string;
     email: string;
@@ -7,4 +7,20 @@ interface Isupervisor {
     profileImage: string;
     rate:number
   }
-  export type {Isupervisor}
+  interface ICours{
+    id: string,
+    name:string,
+    supervisorName:string,
+    phone:string,
+    rate: number,
+    startDate: string,
+    endDate: string,
+    status:Status
+  }
+  interface ICard{
+      title:string,date:string,description:string,status:Status
+  }
+  interface IAssignments extends ICard{
+
+  }
+  export type {ISupervisor,Status,IAssignments,ICard,ICours}
