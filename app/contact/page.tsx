@@ -21,15 +21,7 @@ const ContactPage = () => {
         <ContactInfo theme={theme} />
         <ContactForm theme={theme} />
 
-        <div className="max-w-5xl mx-auto flex justify-center mt-6">
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-medium py-3 px-12 transition-colors rounded"
-
-          >
-            SEND MESSAGE
-          </button>
-        </div>
+    
       </div>
     </div>
   )
