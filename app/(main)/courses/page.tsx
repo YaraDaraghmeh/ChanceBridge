@@ -17,10 +17,16 @@ console.log(data)
 <GlobalLoadingPage/>:
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-8xl  felx items-center justify-center m-14 mx-32 ">
 
-          <Table isDisplayCheckbox={true} columns={['name','supervisorName','phone','rate','status']} bodydatatable={data.map((item:ICours)=>({...item,
+          <Table actionsTable={{
+            view:()=>{},
+            edit:()=>{},
+            delete:()=>{}
+          }}
+           isDisplayCheckbox={true} columns={['name','supervisorName','phone','rate','status']} bodydatatable={data.map((item:ICours)=>({...item,
             rate:<ReactStars/>,
             status: <BadgeCheck size={20} color={`${item.status === 'completed' ? 'green' : item.status === 'panding' ? 'yellow' : 'red'}`} />
-          }))}/>
+          }))}
+          />
           </div>
 }
 </>

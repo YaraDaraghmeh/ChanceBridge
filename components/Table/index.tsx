@@ -1,12 +1,14 @@
+import { Eye, Pencil, Trash2 } from 'lucide-react';
 import React from 'react';
 
 interface ITable {
   isDisplayCheckbox: boolean;
   columns: string[];
   bodydatatable: Record<string, any>[];
+  actionsTable?:Record<string,()=>void>
 }
 
-const Table = ({ isDisplayCheckbox, columns, bodydatatable }: ITable) => {
+const Table = ({ isDisplayCheckbox, columns, bodydatatable ,actionsTable}: ITable) => {
   return (
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -30,6 +32,7 @@ const Table = ({ isDisplayCheckbox, columns, bodydatatable }: ITable) => {
               {title}
             </th>
           ))}
+          {actionsTable&&<th>actions</th>}
         </tr>
       </thead>
       <tbody>
@@ -58,8 +61,25 @@ const Table = ({ isDisplayCheckbox, columns, bodydatatable }: ITable) => {
                 {row[col]?? row[col]}
               </td>
             ))}
+
+           <td className='flex gap-3  my-5 '>
+           {actionsTable&&Object.keys(actionsTable).map(action=>{
+           switch (action) {
+            case 'delete':{return <Trash2 color='red'/> }
+            case 'edit':{return <Pencil color='yellow' /> }
+            case 'view':{return <Eye color='green' />}
+
+           
+            default:return null
+              break;
+           }
+        })}
+            </td>        
+    
           </tr>
+
         ))}
+ 
       </tbody>
     </table>
   );
