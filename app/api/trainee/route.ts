@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+
 const traineeCollections={
 
       Certifications:[{
@@ -64,6 +65,7 @@ const traineeCollections={
 
   
   
+    
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(
       { results: traineeCollections },

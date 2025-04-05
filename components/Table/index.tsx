@@ -57,7 +57,7 @@ const Table = ({ isDisplayCheckbox, columns, bodydatatable ,actionsTable}: ITabl
             )}
             
             {columns.map((col, colIndex) => (
-              <td key={colIndex} className="px-6 py-4">
+              <td key={colIndex} className="px-6 py-4 ">
                 {row[col]?? row[col]}
               </td>
             ))}
@@ -67,7 +67,6 @@ const Table = ({ isDisplayCheckbox, columns, bodydatatable ,actionsTable}: ITabl
            switch (action) {
             case 'delete':{return <Trash2 color='red'/> }
             case 'edit':{return <Pencil color='green' /> }
-            case 'view':{return <Eye color='black' />}
 
            
             default:return null

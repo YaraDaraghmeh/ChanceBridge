@@ -1,3 +1,4 @@
+import trainee from "@/models/trainee";
 import { ICours } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -41,14 +42,32 @@ const courses :ICours[]= [
     name:'NextJS development',
   }];
 
+ 
+
+  export const GET = async (request: NextRequest) => {
+    try {
+      await connectToDatabase();
+      const supervisors = await trainee.find(); // Query all supervisors
+  
+      return NextResponse.json(
+        { results: supervisors },
+        { status: 200 }
+      );
+    } catch (error) {
+      return NextResponse.json(
+        { error: "Failed to fetch supervisors" },
+        { status: 500 }
+      );
+    }
+  };
+  
 
 
-export const GET =  (request: NextRequest) => {
-    return NextResponse.json(
-      { results: courses },
-      { status: 200 }
-    );
-  }
 
   
+
+function connectToDatabase() {
+  throw new Error("Function not implemented.");
+}
+
 
