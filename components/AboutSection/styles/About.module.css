@@ -114,7 +114,7 @@
     );
   }
 
-  /* إضافة تأثير الكتابة للنص الرئيسي */
+  
 .gradientText {
   position: relative;
   overflow: hidden;
@@ -141,7 +141,7 @@
   100% { transform: translateX(100%); }
 }
 
-/* تعديلات للوضع المظلم */
+
 .dark .gradientText::after {
   background: linear-gradient(
     90deg,
