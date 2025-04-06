@@ -25,7 +25,7 @@ const assignments :IAssignments[]= [
 
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(
-      { results: assignments },
+      { result: assignments },
       { status: 200 }
     );
   }

@@ -1,11 +1,10 @@
 "use client";
 import ApexChart from '@/components/chart';
-import ImageSlider from '@/components/ImageSlider';
 import Table from '@/components/Table';
 import TitleOfSection from '@/components/TitleOfSection';
 import UserCollections from '@/components/UserCollections';
 import { BadgeCheck, BookMarked, BookOpenText, ClipboardList, ScrollText, Users } from 'lucide-react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactStars from 'react-stars';
 
 const userCollections = [{
@@ -31,7 +30,19 @@ const numberOfAppoforDay = [0, 0, 4, 0, 6, 0, 0]
 
 
 const page = () => {
+//const {data} = useFetch('/trainee')
+/*useEffect(()=>{
+  API_PRO.get('/trainee').then((res:any)=>res.json()).then(res=>console.log(res))
+},[])*/
+  useEffect(()=>{
+    //  API_PRO.get('/trainee').then(res=>console.log(res))
+ fetch('/api/user',{method:'get',headers: {
+    Authorization: `Bearer ${localStorage.getItem('token')}` 
+   }
+}).then(res=>res.json()).then(res=>console.log(res))
+    },[])
 
+  
   return (
     <main className="w-full md:w-[calc(100%-256px)] bg-gray-50 dark:bg-gray-800 min-h-screen transition-all main">
 

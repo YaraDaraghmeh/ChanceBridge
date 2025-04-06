@@ -1,3 +1,6 @@
+
+
+
 import { ICertification, ISupervisor } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 const certifications: ICertification[] = [
@@ -18,12 +21,12 @@ const certifications: ICertification[] = [
   // Add more certification objects as needed
 ];
 
+
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(
-      { results: certifications },
+      { result: certifications },
       { status: 200 }
     );
   }
 
   
-

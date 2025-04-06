@@ -1,6 +1,6 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
-const traineeSchema = new Schema({
+const adminSchema = new Schema({
   id: String,
   name: String,
   email: String,
@@ -23,9 +23,16 @@ const traineeSchema = new Schema({
       supervisorName: String,
       graduationYear: String,
       average: String,
-    },
+    }
+    
   ],
+users:[{
+    id:String,
+    name:String,
+    type:String,
+    phone:String
+}]
 });
 
-const Trainee = models.Trainee || model("Trainee", traineeSchema);
+const Trainee = models.Admin || model("Admin", adminSchema);
 export default Trainee;

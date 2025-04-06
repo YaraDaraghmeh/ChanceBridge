@@ -6,7 +6,7 @@ import { IAssignments } from '@/types'
 import React from 'react'
 
 const page = () => {
-  const {data,error,loading}=useFetch('trainee/assignments')
+  const {data,error,loading}=useFetch('user/assignments')
 
   return (
 

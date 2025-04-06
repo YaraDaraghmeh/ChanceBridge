@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 
 const useFetch = (partOfUrl:string) => {
@@ -6,14 +7,18 @@ const useFetch = (partOfUrl:string) => {
 
     useEffect(() => {
         setResponseObject({...responseObject,loading:true})
-        fetch(`/api/${partOfUrl}`) // API call to get supervisors
+        fetch(`/api/${partOfUrl}`,{method:'get',headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}` 
+         }
+      }) // API call to get supervisors
           .then((res) => res.json())
           .then((data) => {
-            setResponseObject({...responseObject,data:data.results,loading:false})})
+            console.log(data.result)
+            setResponseObject({...responseObject,data:data.result,loading:false})})
           .catch((err) => setResponseObject({...responseObject,error:'happen some problem'}));
       }, []);
     
-  return responseObject  
+  return responseObject;
 }
 
-export default useFetch
+export default useFetch;

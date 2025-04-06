@@ -54,10 +54,11 @@ const supervisors :ISupervisor[]= [{
 
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(
-      { results: supervisors },
+      { result: supervisors },
       { status: 200 }
     );
   }
 
+  
   
 

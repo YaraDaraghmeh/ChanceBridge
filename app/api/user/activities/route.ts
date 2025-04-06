@@ -1,4 +1,4 @@
-import { IAssignments, ISupervisor } from "@/types";
+import { IAssignments } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
 // Dummy data (Replace this with data from your database)
@@ -26,7 +26,7 @@ const assignments :IAssignments[]= [
 
 export const GET =  (request: NextRequest) => {
     return NextResponse.json(
-      { results: assignments },
+      { result: assignments },
       { status: 200 }
     );
   }

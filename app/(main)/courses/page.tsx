@@ -3,20 +3,22 @@
 import useFetch from '@/app/hooks/useFetch'
 import GlobalLoadingPage from '@/app/loading'
 import Table from '@/components/Table'
+import { userInfo } from '@/storage'
 import { ICours } from '@/types'
 import { BadgeCheck } from 'lucide-react'
 import React from 'react'
 import ReactStars from 'react-stars'
 
 const courses = () => {
-  const {data,error,loading}=useFetch('trainee/courses')
-console.log(data)
+  const {data,error,loading}=useFetch(`user/courses`)
+
+console.log(data,error,loading)
+
   return (
 <>
 {loading?
-<GlobalLoadingPage/>:
+<GlobalLoadingPage/>:data.length?
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-8xl  felx items-center justify-center m-14 mx-32 ">
-
           <Table actionsTable={{
             view:()=>{},
             edit:()=>{},
@@ -28,7 +30,7 @@ console.log(data)
             status: <BadgeCheck size={20} color={`${item.status === 'completed' ? 'green' : item.status === 'panding' ? 'yellow' : 'red'}`} />
           }))}
           />
-          </div>
+          </div>:<div>no have item</div>
 }
 </>
 
