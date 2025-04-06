@@ -44,7 +44,7 @@ export default function SignIn() {
       dispatch({ type: "LOGIN", payload: data.user });
   
       setSuccess("Login successful!"); 
-      router.push("/dashboard");
+      router.push("/dashboard/dash"); // Redirect to dashboard after successful login
     } catch (error: any) {
       setError(error.message || "Failed to sign in");
     } finally {

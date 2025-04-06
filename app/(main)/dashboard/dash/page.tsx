@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import DashProfile from '@/components/DashProfile';
 
 const Dashboard = () => {
   const router = useRouter();
@@ -17,7 +16,7 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* {!state.user ? (
+      {!state.user ? (
         <p>Loading...</p> 
       ) : (
         <div>
@@ -38,8 +37,7 @@ const Dashboard = () => {
             )}
         </div>
         </div>
-      )} */}
-      <DashProfile />
+      )}
     </>
   );
 };
