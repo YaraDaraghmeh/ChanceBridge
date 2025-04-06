@@ -11,7 +11,13 @@ interface FormData {
     password: string;
     confirmPassword: string;
     role: string;
+    phone: string;
+    location: string;
+    gender: string;
+    university: string;
+    specialization: string;
 }
+
 
 export default function SignUp() {
     const router = useRouter();
@@ -21,7 +27,13 @@ export default function SignUp() {
         password: '',
         confirmPassword: '',
         role: '',
+        phone: '',
+        location: '',
+        gender: '',
+        university: '',
+        specialization: '',
     });
+    
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);  
     const [success, setSuccess] = useState<string | null>(null);  
@@ -43,6 +55,7 @@ export default function SignUp() {
         }
     
         try {
+            console.log("FormData being sent:", formData);
             const res = await fetch("/api/auth/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

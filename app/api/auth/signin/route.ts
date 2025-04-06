@@ -21,17 +21,21 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
     }
 
-
-const token = jwt.sign(
-  { 
-    id: user._id, 
-    email: user.email, 
-    role: user.role, 
-    username: user.username  
-  }, 
-  SECRET_KEY, 
-  { expiresIn: "7d" }
-);
+    const token = jwt.sign(
+      { 
+        id: user._id, 
+        email: user.email, 
+        role: user.role, 
+        username: user.username,  
+        phone: user.phone,
+        location: user.location, 
+        gender: user.gender, 
+        university: user.university, 
+        specialization: user.specialization
+      }, 
+      SECRET_KEY, 
+      { expiresIn: "7d" }
+    );
 
     return NextResponse.json({
       message: "Login successful",
@@ -41,6 +45,11 @@ const token = jwt.sign(
         role: user.role,
         username: user.username, 
         googlePhotoUrl: user.googlePhotoUrl, 
+        phone: user.phone,
+        location: user.location, 
+        gender: user.gender, 
+        university: user.university, 
+        specialization: user.specialization 
       }
     }, { status: 200 });
     

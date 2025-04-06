@@ -31,7 +31,7 @@ export default function Header() {
 
   const handleSignOut = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+      await fetch('/api/auth/signout', { method: 'POST', credentials: 'include' });
       dispatch({ type: 'LOGOUT' });
       router.push('/user/signin');
     } catch (error) {
