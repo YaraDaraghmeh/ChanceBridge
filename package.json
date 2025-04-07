@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "apexcharts": "^4.5.0",
+    "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "firebase": "^11.6.0",
     "flowbite-react": "^0.7.8",
@@ -16,14 +18,16 @@
     "install": "^0.13.0",
     "ionicons": "^7.4.0",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.485.0",
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.0",
     "next": "^15.2.4",
     "npm": "^11.2.0",
     "react": "^19.0.0",
+    "react-apexcharts": "^1.7.0",
     "react-circular-progressbar": "^2.2.0",
     "react-dom": "^19.0.0",
-    "react-ionicons": "^1.5.7",
+    "react-stars": "^2.2.5",
     "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
@@ -33,6 +37,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-stars": "^2.2.4",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.2.2",
