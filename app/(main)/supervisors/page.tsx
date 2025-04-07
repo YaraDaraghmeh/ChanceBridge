@@ -10,7 +10,7 @@ const SupervisorPage = () => {
 const {data,error,loading}=useFetch('user/supervisors')
   return (
     <div className="min-h-screen  p-6 w-full">
-      <h2 className="text-xl font-bold text-center text-gray-800 mb-6  ">
+      <h2 className="text-xl font-bold text-center  mb-6  ">
         My Supervisors
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
