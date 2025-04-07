@@ -94,7 +94,7 @@ const Menu = () => {
 
    
      
-      <span className="text-gray-400 font-bold">PERSONAL</span>
+      <span className="text-gray-900 font-bold">PERSONAL</span>
 
       {personalListMenu.map(
      itemOfMenu=> <li className="mb-1 group">
