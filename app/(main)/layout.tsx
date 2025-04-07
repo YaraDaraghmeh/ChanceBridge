@@ -29,7 +29,7 @@ const Layout =({
    <a href="#" className="flex items-center pb-4 border-b border-b-gray-800">
       <h2 className="font-bold text-2xl text-black">
         {state.user?.username}{""}
-        <span className="bg-[#f84525] text-white px-2 rounded-md">Sup</span>
+        <span className="bg-[#f84525] text-white px-2 rounded-md">{state.user?.role.substring(0,3)}</span>
       </h2>
     </a>
    <Menu/>
