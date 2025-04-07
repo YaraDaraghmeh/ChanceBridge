@@ -9,7 +9,7 @@ import { ISupervisor } from "@/types";
 const SupervisorPage = () => {
 const {data,error,loading}=useFetch('user/supervisors')
   return (
-    <div className="min-h-screen bg-gray-100 p-6 w-full">
+    <div className="min-h-screen  p-6 w-full">
       <h2 className="text-xl font-bold text-center text-gray-800 mb-6  ">
         My Supervisors
       </h2>

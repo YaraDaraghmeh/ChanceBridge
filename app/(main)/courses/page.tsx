@@ -34,12 +34,6 @@ console.log(data,error,loading)
 }
 </>
 
-    
-
-      
-     
-
-
   )
 }
 
