@@ -15,6 +15,7 @@ const menuByRole :Record<string,List[]> = {
   trainee: [
     { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
     { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
+    { icon: <Users />, name: 'Supervisors', href: '/supervisors' },
     { icon: <CalendarDays />, name: 'Timetable', href: '/timeTable' },
     { icon: <ClipboardList />, name: 'Assignments', href: '/assignments' },
     { icon: <BookMarked />, name: 'Certificates', href: '/ceritifactions' },
