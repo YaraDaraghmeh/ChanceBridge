@@ -39,7 +39,6 @@ export default function SignIn() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
   
       dispatch({ type: "LOGIN", payload: data.user });
   

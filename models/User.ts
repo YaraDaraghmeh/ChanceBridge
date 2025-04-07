@@ -20,6 +20,7 @@ export interface IUser extends Document {
   appliedJobs?: Types.ObjectId[]; // For trainee
 }
 
+
 const UserSchema = new Schema<IUser>({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },

@@ -23,6 +23,7 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
         case 'LOGIN':
             localStorage.setItem('user', JSON.stringify(action.payload));  
             return { user: action.payload };
+            
         case 'LOGOUT':
             localStorage.removeItem('user');  
             localStorage.removeItem('token'); 

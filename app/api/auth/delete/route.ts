@@ -12,7 +12,6 @@ export async function DELETE(req: Request) {
     if (!token) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
-
     const decoded = jwt.verify(token, SECRET_KEY) as JwtPayload;
     if (!decoded || !decoded.id) {
       return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
@@ -32,3 +31,4 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
+  
