@@ -18,6 +18,7 @@ export interface IUser extends Document {
   trainees?: Types.ObjectId[]; // For company or supervisor
   supervisors?: Types.ObjectId[]; // For company
   appliedJobs?: Types.ObjectId[]; // For trainee
+  acceptedJobs?: Types.ObjectId[]
 }
 
 
@@ -42,6 +43,7 @@ const UserSchema = new Schema<IUser>({
   trainees: [{ type: Schema.Types.ObjectId, ref: "User" }], // if company or supervisor
   supervisors: [{ type: Schema.Types.ObjectId, ref: "User" }], // if company
   appliedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }], // if trainee
+acceptedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }]
 });
 
 export default mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
