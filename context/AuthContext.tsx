@@ -5,6 +5,7 @@ import { IUser } from '@/models/User';
 
 interface AuthState {
     user: IUser | null;
+    token:string|null
 }
 
 interface AuthContextType {
@@ -15,19 +16,20 @@ interface AuthContextType {
 type AuthAction = { type: 'LOGIN'; payload: IUser } | { type: 'LOGOUT' };
 
 const initialState: AuthState = { 
-    user: typeof window !== "undefined" ? JSON.parse(localStorage.getItem('user') || 'null') : null
+    user: typeof window !== "undefined" ? JSON.parse(localStorage.getItem('user') || 'null') : null,
+    token: JSON.parse(localStorage.getItem('user') || 'null')
 };
 
 function authReducer(state: AuthState, action: AuthAction): AuthState {
     switch (action.type) {
         case 'LOGIN':
             localStorage.setItem('user', JSON.stringify(action.payload));  
-            return { user: action.payload };
+            return {...state, user: action.payload };
             
         case 'LOGOUT':
             localStorage.removeItem('user');  
             localStorage.removeItem('token'); 
-            return { user: null };
+            return {...state, user: null };
         default:
             return state;
     }

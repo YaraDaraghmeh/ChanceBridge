@@ -1,14 +1,19 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
 const SupervisorSchema = new mongoose.Schema({
-  id: { type: Number, default: 0 },
+  id: { type: String, default: 0 },
   name: { type: String, default: "" },
   email: { type: String, default: "" },
   phone: { type: String, default: "" },
   profileImage: { type: String, default: "" },
   rate: { type: Number, default: 0 },
 });
+const feedbackSchema=new mongoose.Schema({
+  name: { type: String, default: "" },
+  feedback:{type:String,default:''},
+  rating:{type:Number,default:0},
+  date:{type:String,default:''},
 
-
+});
 
 export interface IUser extends Document {
   username: string;
@@ -28,6 +33,8 @@ export interface IUser extends Document {
   trainees?: Types.ObjectId[]; // For company or supervisor
   supervisors?: Types.Array<typeof SupervisorSchema>; // For company
   appliedJobs?: Types.ObjectId[]; // For trainee
+  feedbacks?:Types.Array<typeof feedbackSchema >
+  acceptedJobs?: Types.ObjectId[]
 }
 
 
@@ -52,6 +59,8 @@ const UserSchema = new Schema<IUser>({
   trainees: [{ type: Schema.Types.ObjectId, ref: "User" }], // if company or supervisor
   supervisors: [SupervisorSchema], // if company
   appliedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }], // if trainee
+  feedbacks:[feedbackSchema],
+acceptedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }]
 });
 
 export default mongoose.models.User || mongoose.model<IUser>("User", UserSchema);

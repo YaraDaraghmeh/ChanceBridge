@@ -1,6 +1,6 @@
 type Status='panding'|'confirmed'|'completed'
 interface ISupervisor {
-    id: number;
+    id: string;
     name: string;
     email: string;
     phone: string;
