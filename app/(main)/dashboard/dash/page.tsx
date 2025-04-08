@@ -1,4 +1,6 @@
 "use client";
+import useFetch from '@/app/hooks/useFetch';
+import GlobalLoadingPage from '@/app/loading';
 import ApexChart from '@/components/chart';
 import Table from '@/components/Table';
 import TitleOfSection from '@/components/TitleOfSection';
@@ -30,24 +32,16 @@ const numberOfAppoforDay = [0, 0, 4, 0, 6, 0, 0]
 
 
 const page = () => {
-//const {data} = useFetch('/trainee')
-/*useEffect(()=>{
-  API_PRO.get('/trainee').then((res:any)=>res.json()).then(res=>console.log(res))
-},[])*/
-  useEffect(()=>{
-    //  API_PRO.get('/trainee').then(res=>console.log(res))
- fetch('/api/user',{method:'get',headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}` 
-   }
-}).then(res=>res.json()).then(res=>console.log(res))
-    },[])
+const {data,loading} = useFetch('/user')
+
+console.log(data)
 
   
   return (
     <main className="w-full md:w-[calc(100%-256px)] min-h-screen transition-all main">
 
       {/* Content */}
-      <div className="p-6">
+  {loading?<GlobalLoadingPage/>:   <div className="p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {
             userCollections.map(col =>
@@ -83,6 +77,8 @@ const page = () => {
                     graduationDate: '20/3/2021',
                     rate: <ReactStars count={5} color1='yellow' />,
                   }]} />
+
+
 
               </div>
             </div>
@@ -149,7 +145,7 @@ const page = () => {
           </div>
         </div>
 
-      </div>
+      </div>}
       {/* End Content */}
     </main>
   )

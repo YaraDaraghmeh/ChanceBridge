@@ -15,15 +15,16 @@ export const GET = async (req: NextRequest) => {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
     const decoded: any = jwt.verify(token, JWT_SECRET);
-    const traineeId = decoded.id;
-    console.log(traineeId)
-    const targetUser = await User.findOne({ email: 'hadeelwadia@gmail.com' });
+    const userId = decoded.id;
+    console.log(userId)
+    const targetUser = await User.findOne({ _id: userId });
 
     if (!targetUser) {
       return NextResponse.json({ error: "user not found" }, { status: 404 });
     }
 
     return NextResponse.json({result:targetUser,status:200 });
+    
   } catch (error) {
     return NextResponse.json({ error: "Invalid token or server error" }, { status: 500 });
   }
