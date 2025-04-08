@@ -44,7 +44,7 @@ const page = () => {
 
   
   return (
-    <main className="w-full md:w-[calc(100%-256px)] bg-gray-50 dark:bg-gray-800 min-h-screen transition-all main">
+    <main className="w-full md:w-[calc(100%-256px)] min-h-screen transition-all main">
 
       {/* Content */}
       <div className="p-6">

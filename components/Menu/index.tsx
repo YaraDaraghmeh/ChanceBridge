@@ -63,18 +63,18 @@ const Menu = () => {
           <li className="mb-1 group" key={menuItem.name}>
             <Link href={menuItem.href} className={linkClasses}>
               {menuItem.icon}
-              <span className="text-sm ml-2">{menuItem.name}</span>
+              <span className="text-sm ml-2 dark:text-white lg:text-black">{menuItem.name}</span>
             </Link>
           </li>
         ))}
 
-        <span className="text-gray-900 font-bold mt-4 block">PERSONAL</span>
+        <span className=" font-bold mt-4 block">PERSONAL</span>
 
         {personalList.map((menuItem) => (
           <li className="mb-1 group" key={menuItem.name}>
             <a href={menuItem.href} className={linkClasses}>
               {menuItem.icon}
-              <span className="text-sm ml-2">{menuItem.name}</span>
+              <span className="text-sm ml-2  dark:text-white lg:text-black">{menuItem.name}</span>
             </a>
           </li>
         ))}

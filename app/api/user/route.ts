@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET as string;
 export const GET = async (req: NextRequest) => {
   try {
     await connectToDB();
-   
+
     const token = req.cookies.get("token")?.value || req.headers.get("Authorization")?.split(" ")[1];
      console.log(token)
     if (!token) {
@@ -28,6 +28,8 @@ export const GET = async (req: NextRequest) => {
     return NextResponse.json({ error: "Invalid token or server error" }, { status: 500 });
   }
 };
+
+
 
 
 

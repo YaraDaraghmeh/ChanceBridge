@@ -1,64 +1,40 @@
-import { ISupervisor } from "@/types";
+
+
+
 import { NextRequest, NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
+import connectToDB from "@/lib/mongodb";
+import User from "@/models/User";
+import { ISupervisor } from "@/types";
 
-// Dummy data (Replace this with data from your database)
-const supervisors :ISupervisor[]= [{
-  profileImage: 'images/people/profile-picture-1.jpeg',
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  rate: 5
-},{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-2.jpeg",
-  rate: 4
-},
-{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-3.jpeg",
-  rate: 5
-},
-{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-4.jpeg",
-  rate: 4
-},
-{
-  id: 0,
-  name: "",
-  email: "",
-  phone: "",
-  profileImage: "images/people/profile-picture-5.jpeg",
-  rate: 7
-},
-  {
-    id: 0,
-    name: "",
-    email: "",
-    phone: "",
-    profileImage: "images/people/profile-picture-6.jpeg",
-    rate: 2
-  }];
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
 
 
-export const GET =  (request: NextRequest) => {
-    return NextResponse.json(
-      { result: supervisors },
-      { status: 200 }
-    );
+export const GET = async (req: NextRequest) => {
+  try {
+    await connectToDB();
+    const token = req.cookies.get("token")?.value || req.headers.get("Authorization")?.split(" ")[1];
+    if (!token) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    const decoded: any = jwt.verify(token, JWT_SECRET);
+    const traineeId = decoded.id;
+    const targetUser = await User.findOne({ _id: traineeId });
+
+    if (!targetUser) {
+      return NextResponse.json({ error: "user not found" }, { status: 404 });
+    }
+  console.log(targetUser.supervisors)
+    return NextResponse.json({result:targetUser.supervisors,status:200 });
+
+
+  } catch (error) {
+
+    return NextResponse.json({ massage:'invaild'}, { status: 500 });
   }
+};
 
-  
-  
+
+
 
