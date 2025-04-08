@@ -1,4 +1,14 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
+const SupervisorSchema = new mongoose.Schema({
+  id: { type: Number, default: 0 },
+  name: { type: String, default: "" },
+  email: { type: String, default: "" },
+  phone: { type: String, default: "" },
+  profileImage: { type: String, default: "" },
+  rate: { type: Number, default: 0 },
+});
+
+
 
 export interface IUser extends Document {
   username: string;
@@ -16,7 +26,7 @@ export interface IUser extends Document {
   // Role-based fields
   jobs?: Types.ObjectId[]; // For company
   trainees?: Types.ObjectId[]; // For company or supervisor
-  supervisors?: Types.ObjectId[]; // For company
+  supervisors?: Types.Array<typeof SupervisorSchema>; // For company
   appliedJobs?: Types.ObjectId[]; // For trainee
   acceptedJobs?: Types.ObjectId[]
 }
@@ -41,7 +51,7 @@ const UserSchema = new Schema<IUser>({
   // Role-based relations
   jobs: [{ type: Schema.Types.ObjectId, ref: "Job" }], // if company
   trainees: [{ type: Schema.Types.ObjectId, ref: "User" }], // if company or supervisor
-  supervisors: [{ type: Schema.Types.ObjectId, ref: "User" }], // if company
+  supervisors: [SupervisorSchema], // if company
   appliedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }], // if trainee
 acceptedJobs: [{ type: Schema.Types.ObjectId, ref: "Job" }]
 });

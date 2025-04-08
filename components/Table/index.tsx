@@ -10,7 +10,7 @@ interface ITable {
 
 const Table = ({ isDisplayCheckbox, columns, bodydatatable ,actionsTable}: ITable) => {
   return (
-    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
           {isDisplayCheckbox && (
@@ -62,7 +62,7 @@ const Table = ({ isDisplayCheckbox, columns, bodydatatable ,actionsTable}: ITabl
               </td>
             ))}
 
-           <td className='flex gap-3  my-5  cursor-pointer'>
+           <td className='flex gap-3  my-5  cursor-pointer '>
            {actionsTable&&Object.keys(actionsTable).map(action=>{
            switch (action) {
             case 'delete':{return <Trash2 color='red'/> }

@@ -200,9 +200,11 @@ const CoursesPage = () => {
         </div>
       </section>
       
+      
       {/* Testimonials Section */}
       <TestimonialsSection />
       
+
       {/* Course Detail Modal */}
       {selectedCourse && (
         <CourseDetailModal 
