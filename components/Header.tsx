@@ -77,9 +77,9 @@ export default function Header() {
                 <span className="block text-sm">@{state.user?.username}</span>
                 <span className="block text-sm font-medium truncate">{state.user?.email}</span>
               </Dropdown.Header>
-              <Dropdown.Item as={Link} href="/dashboard/profile">Profile</Dropdown.Item>
+              <Dropdown.Item as={Link} href="/profile">Profile</Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item as={Link} href="/dashboard/dash">Dashboard</Dropdown.Item>
+              <Dropdown.Item as={Link} href="/dashboard">Dashboard</Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
             </Dropdown>

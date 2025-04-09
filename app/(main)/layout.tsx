@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Menu from '@/components/Menu';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 const Layout =({
   children,
@@ -35,7 +36,10 @@ const Layout =({
    <Menu/>
   </div>
   {/* end sidenav */}
+  <ProtectedRoute>
   {children}
+
+  </ProtectedRoute>
 
 </div>
 
