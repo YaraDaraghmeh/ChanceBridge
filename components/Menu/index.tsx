@@ -12,35 +12,33 @@ interface List{
   name:string,
   href:string
 }
+const ShareListForUsers=[    { icon: <Home />, name: 'Dashboard', href: '/dashboard' },
+  { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
+  { icon: <Network   />, name: 'jobs', href: '/jobs' }]
 const menuByRole :Record<string,List[]> = {
   trainee: [
-    { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
-    { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
+ ...ShareListForUsers,
     { icon: <Users />, name: 'Supervisors', href: '/supervisors' },
     { icon: <CalendarDays />, name: 'Timetable', href: '/timeTable' },
     { icon: <ClipboardList />, name: 'Assignments', href: '/assignments' },
     { icon: <BookMarked />, name: 'Certificates', href: '/ceritifactions' },
-    { icon: <Network   />, name: 'jobs', href: '/jobs' }
 
   ],
   supervisor: [
-    { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
+    ...ShareListForUsers,
     { icon: <Users />, name: 'Trainees', href: '/trainees' },
-    { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
     { icon: <ScrollText />, name: 'Activities', href: '/activites' },
     { icon: <BookMarked />, name: 'Certificates', href: '/ceritifactions' },
   ],
   admin: [
-    { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
+    { icon: <Home />, name: 'Dashboard', href: '/dashboard' },
     { icon: <Users />, name: 'All Users', href: '/users' },
     { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
     { icon: <ScrollText />, name: 'Reports', href: '/reports' },
   ],
   company: [
-    { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
+    ...ShareListForUsers,
     { icon: <Users />, name: 'Supervisors', href: '/supervisors' },
-    { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
-    { icon: <Network   />, name: 'jobs', href: '/jobs' },
 
   ],
 };
