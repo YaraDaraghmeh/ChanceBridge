@@ -292,13 +292,13 @@ export default function DashProfile() {
             },
             body: JSON.stringify(payload),
         });
-
+        
         const data = await res.json();
-
+          alert('good')
         if (!res.ok) {
             throw new Error(data.message || 'Failed to create job');
         }
-
+ 
         setAddJobSuccess('Job created successfully!');
         setNewJobData({
             title: "", description: "", extendedDescription: "", requirements: "",
@@ -309,6 +309,7 @@ export default function DashProfile() {
             setShowAddJobModal(false);
             setAddJobSuccess(null);
         }, 2000);
+
 
     } catch (error: any) {
         setAddJobError(error.message || 'An error occurred while creating the job.');

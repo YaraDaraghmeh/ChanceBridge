@@ -202,7 +202,7 @@ function MyJobsPage() {
    );
 
    return (
-    <div className="p-4 sm:p-6 md:p-8 dark:bg-gray-950 dark:text-gray-300 min-h-screen">
+    <div className="p-4 sm:p-6 md:p-8 dark:bg-gray-950 dark:text-gray-300 min-h-screen w-screen">
         <div className="mb-8 pb-4 border-b border-gray-200 dark:border-gray-700">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-3">
             <Briefcase className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />

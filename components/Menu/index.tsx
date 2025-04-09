@@ -2,7 +2,7 @@ import { useAuth } from '@/context/AuthContext';
 import {
   BadgeCheck,
   Bell, BookMarked, BookOpenText, CalendarDays, ClipboardList,
-  Home, LogOut, MessageSquare, ScrollText, Users
+  Home, LogOut, MessageSquare, Network, ScrollText, User2, Users
 } from 'lucide-react';
 import Link from 'next/link';
 import React, { ReactElement } from 'react';
@@ -20,6 +20,8 @@ const menuByRole :Record<string,List[]> = {
     { icon: <CalendarDays />, name: 'Timetable', href: '/timeTable' },
     { icon: <ClipboardList />, name: 'Assignments', href: '/assignments' },
     { icon: <BookMarked />, name: 'Certificates', href: '/ceritifactions' },
+    { icon: <Network   />, name: 'jobs', href: '/jobs' }
+
   ],
   supervisor: [
     { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
@@ -38,12 +40,15 @@ const menuByRole :Record<string,List[]> = {
     { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
     { icon: <Users />, name: 'Supervisors', href: '/supervisors' },
     { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
-    { icon: <BadgeCheck  />, name: 'jobs', href: '/jobs' },
+    { icon: <Network   />, name: 'jobs', href: '/jobs' },
 
   ],
 };
 
 const personalList = [
+  { icon:       <User2 className="w-5 h-5" />
+    , name: 'profile', href: '/profile' },
+
   { icon: <Bell />, name: 'Notifications', href: '#' },
   { icon: <MessageSquare />, name: 'Messages', href: '#' },
   { icon: <LogOut />, name: 'Logout', href: '#' },
