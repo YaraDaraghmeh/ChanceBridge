@@ -27,15 +27,15 @@ export async function DELETE(request: NextRequest, context: { params: { jobId: s
   
         // 2. Authentication & Authorization (Company)
         const authorization = request.headers.get('Authorization');
-        if (!authorization || !authorization.startsWith('Bearer ')) 
+        if (!authorization || !authorization.startsWith('Bearer ')) { /* ... error handling ... */ }
         const token = authorization.split(' ')[1];
         const JWT_SECRET = process.env.JWT_SECRET;
-        if (!JWT_SECRET) 
+        if (!JWT_SECRET) { /* ... error handling ... */ }
         let decoded: JwtPayload;
         try { decoded = jwt.verify(token, JWT_SECRET) as JwtPayload; }
-        catch (error) 
+        catch (error) { /* ... error handling ... */ }
         const companyUser = await User.findById(decoded.id).session(session);
-        if (!companyUser || companyUser.role !== 'company') 
+        if (!companyUser || companyUser.role !== 'company') { /* ... error handling ... */ }
         console.log("Company user verified:", companyUser.username);
   
         // 3. Find Job & Verify Ownership
@@ -86,7 +86,7 @@ export async function DELETE(request: NextRequest, context: { params: { jobId: s
   
   
     } catch (error: any) {
-        if (session)
+        if (session) { /* ... abort logic ... */ }
         console.error("Error rejecting applicant:", error);
         const errorMessage = process.env.NODE_ENV === 'production' ? 'Internal Server Error' : error.message;
         return NextResponse.json({ message: 'Internal Server Error', error: errorMessage }, { status: 500 });
