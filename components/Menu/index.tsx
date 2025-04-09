@@ -1,5 +1,6 @@
 import { useAuth } from '@/context/AuthContext';
 import {
+  BadgeCheck,
   Bell, BookMarked, BookOpenText, CalendarDays, ClipboardList,
   Home, LogOut, MessageSquare, ScrollText, Users
 } from 'lucide-react';
@@ -37,6 +38,8 @@ const menuByRole :Record<string,List[]> = {
     { icon: <Home />, name: 'Dashboard', href: '/dashboard/dash' },
     { icon: <Users />, name: 'Supervisors', href: '/supervisors' },
     { icon: <BookOpenText />, name: 'Courses', href: '/courses' },
+    { icon: <BadgeCheck  />, name: 'jobs', href: '/jobs' },
+
   ],
 };
 
