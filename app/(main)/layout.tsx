@@ -1,7 +1,3 @@
-
-
-
-
 "use client";
 
 import { useEffect, useState } from 'react';
@@ -44,3 +40,40 @@ const Layout =({
 };
 
 export default Layout;
+
+// "use client"
+
+// import type React from "react"
+
+// import { useState, useEffect } from "react"
+// import Sidebar from "@/components/Sidebar"
+// import ProtectedRoute from "@/components/ProtectedRoute"
+
+// interface DashboardLayoutProps {
+//   children: React.ReactNode
+// }
+
+// const DashboardLayout = ({ children }: DashboardLayoutProps) => {
+//   const [mounted, setMounted] = useState(false)
+
+//   useEffect(() => {
+//     setMounted(true)
+//   }, [])
+
+//   if (!mounted) {
+//     return null
+//   }
+
+//   return (
+//     <ProtectedRoute>
+//     <div className="flex min-h-screen ">
+//       <Sidebar />
+//       <main className="flex-1 ml-0 md:ml-64 transition-all duration-300 ease-in-out">
+//         <div className="p-4 sm:p-6 md:p-8">{children}</div>
+//       </main>
+//     </div>
+//     </ProtectedRoute>
+//   )
+// }
+
+// export default DashboardLayout
