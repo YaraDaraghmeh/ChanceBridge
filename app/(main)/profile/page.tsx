@@ -263,11 +263,9 @@ export default function DashProfile() {
     }
 };
 
-<<<<<<< HEAD
 
   // --- Handler for Add Job form submission ---
-=======
->>>>>>> 583223b010f0198c9a0bbd1f2396d617078c0e94
+
   const handleAddJobSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setAddJobLoading(true);

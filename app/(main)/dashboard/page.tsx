@@ -166,7 +166,7 @@ function DashboardPage() {
                             <StatCard icon={<Briefcase />} title="Supervised Jobs" value={stats.supervisedJobsCount} href="/dashboard/training" isLoading={isLoading}/>
                             <StatCard icon={<Activity />} title="Active Supervised Jobs" value={stats.activeSupervisedJobsCount} href="/dashboard/training?status=active" isLoading={isLoading}/> 
                             <StatCard icon={<UserCheck />} title="Trainees in Jobs" value={stats.totalSupervisedTrainees} href="/dashboard/training" isLoading={isLoading}/>
-                             <StatCard icon={<Users />} title="Applicants to Supervised Jobs" value={stats.totalApplicants} href="/dashboard/training" isLoading={isLoading}/>
+                            <StatCard icon={<Users />} title="Applicants to Supervised Jobs" value={stats.totalApplicantsToJobs} href="/dashboard/training" isLoading={isLoading}/>
                         </>
                     )}
                      {role === 'admin' && (

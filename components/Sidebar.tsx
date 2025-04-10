@@ -93,43 +93,43 @@ const Sidebar = ({ className = "" }: SidebarProps) => {
       icon: <User size={20} />,
       roles: ["admin", "company", "supervisor", "trainee"],
     },
-    // Company specific
-    {
-      title: "Job Management",
-      href: "#",
-      icon: <Briefcase size={20} />,
-      roles: ["company"],
-      children: [
-        {
-          title: "My Jobs",
-          href: "/dashboard/my-jobs",
-          icon: <FileText size={18} />,
-        },
-        {
-          title: "Post Job",
-          href: "/dashboard/post-job",
-          icon: <PlusCircle size={18} />,
-        },
-        {
-          title: "Applications",
-          href: "/dashboard/applications",
-          icon: <CheckCircle2 size={18} />,
-        },
-      ],
-    },
-    {
-      title: "Staff Management",
-      href: "/dashboard/manage-staff",
-      icon: <Users size={20} />,
-      roles: ["company"],
-    },
-    // Trainee specific
     {
       title: "Courses",
       href: "/courses",
       icon: <BookOpenText size={20} />,
-      roles: ["trainee"],
+      roles: ["admin", "company", "supervisor", "trainee"],
     },
+    // Company specific
+    {
+      title: "My Jobs",
+      href: "/jobs",
+      icon: <Briefcase size={20} />,
+      roles: ["company"],
+      // children: [
+      //   {
+      //     title: "My Jobs",
+      //     href: "/jobs",
+      //     icon: <FileText size={18} />,
+      //   },
+      //   {
+      //     title: "Post Job",
+      //     href: "/dashboard/post-job",
+      //     icon: <PlusCircle size={18} />,
+      //   },
+      //   {
+      //     title: "Applications",
+      //     href: "/dashboard/applications",
+      //     icon: <CheckCircle2 size={18} />,
+      //   },
+      // ],
+    },
+    {
+      title: "Supervisors",
+      href: "/supervisors",
+      icon: <ScrollText size={20} />,
+      roles: ["company"],
+    },
+    // Trainee specific
     {
       title: "Training",
       href: "/training",
@@ -169,8 +169,26 @@ const Sidebar = ({ className = "" }: SidebarProps) => {
     // Supervisor specific
     {
       title: "My Trainees",
-      href: "/dashboard/my-trainees",
+      href: "/trainees",
       icon: <Users size={20} />,
+      roles: ["supervisor"],
+    },
+    {
+      title: "Training",
+      href: "/training",
+      icon: <UserCog size={20} />,
+      roles: ["trainee"],
+    },
+    {
+      title: "Activities",
+      href: "/activites",
+      icon: <ScrollText size={20} />,
+      roles: ["supervisor"],
+    },
+    {
+      title: "Certificates",
+      href: "/ceritifactions",
+      icon: <BookMarked size={20} />,
       roles: ["supervisor"],
     },
     {
@@ -181,21 +199,21 @@ const Sidebar = ({ className = "" }: SidebarProps) => {
     },
     // Admin specific
     {
-      title: "User Management",
-      href: "/admin/users",
+      title: "All Users",
+      href: "/users",
       icon: <Users size={20} />,
       roles: ["admin"],
     },
     {
       title: "Companies",
-      href: "/admin/users?role=company",
+      href: "",
       icon: <Building size={20} />,
       roles: ["admin"],
     },
     {
-      title: "Analytics",
-      href: "/admin/analytics",
-      icon: <BarChart3 size={20} />,
+      title: "Reports",
+      href: "/reports",
+      icon: <ScrollText size={20} />,
       roles: ["admin"],
     },
     {
@@ -210,13 +228,13 @@ const Sidebar = ({ className = "" }: SidebarProps) => {
   const personalItems: NavItem[] = [
     {
       title: "Notifications",
-      href: "/dashboard/notifications",
+      href: "#",
       icon: <Bell size={20} />,
       roles: ["admin", "company", "supervisor", "trainee"],
     },
     {
       title: "Messages",
-      href: "/dashboard/messages",
+      href: "#",
       icon: <MessageSquare size={20} />,
       roles: ["admin", "company", "supervisor", "trainee"],
     },
@@ -250,17 +268,25 @@ const Sidebar = ({ className = "" }: SidebarProps) => {
 
       {/* Sidebar */}
       <aside
-    className={`fixed top-0 inset-y-0 left-0 z-30 w-64 h-screen bg-white dark:bg-[rgb(16,23,42)] border-r border-gray-200 dark:border-gray-700 transform transition-all duration-300 ease-in-out ${
-    isMobileMenuOpen ? "translate-x-0 " : "-translate-x-full md:translate-x-0"
-  } ${isScrolled ? "mt-0 pt-16" : "md:mt-16"} ${className}`}
+    className={`fixed top-0 inset-y-0 left-0 z-30 w-64 h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transform transition-all duration-300 ease-in-out ${
+    isMobileMenuOpen ? "translate-x-0  " : "-translate-x-full md:translate-x-0"
+  } ${isScrolled ? "" : "md:mt-16"} ${className}`}
       >
         <div className="flex flex-col h-full">
           {/* Sidebar Header */}
-          {/* <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-center">
-              <h2 className="text-xl font-bold text-indigo-600 dark:text-indigo-400">Training Portal</h2>
-            </div>
-          </div> */}
+          {isMobileMenuOpen && (
+          <div className="p-4 mx-auto border-b border-gray-200 dark:border-gray-700">
+        <Link
+          href="/"
+          className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
+        >
+          <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
+            Training
+          </span>
+          Management
+        </Link>
+          </div>
+          )}
 
           {/* Sidebar Content */}
           <div className="flex-1 overflow-y-auto py-4 px-3">
