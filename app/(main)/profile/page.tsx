@@ -26,8 +26,10 @@ import {
   HiOutlineInformationCircle,
   HiOutlineSparkles,
   HiOutlineClipboardList, 
-  HiOutlineBriefcase as HiExperience 
+  HiOutlineBriefcase as HiExperience ,
+  HiOutlineUserAdd 
 } from "react-icons/hi";
+import { Loader2 } from "lucide-react";
 
 interface NewJobData {
   title: string;
@@ -45,6 +47,12 @@ interface NewJobData {
   startDate: string; 
 }
 
+interface NewTraineeData {
+  username: string;
+  email: string;
+  password: string;
+}
+
 export default function DashProfile() {
   const { state, dispatch } = useAuth();
   const { user: currentUser } = state;
@@ -60,6 +68,15 @@ export default function DashProfile() {
   const [activeTab, setActiveTab] = useState("personal");
   const filePickerRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
+  const [showAddTraineeModal, setShowAddTraineeModal] = useState(false);
+  const [newTraineeData, setNewTraineeData] = useState<NewTraineeData>({
+      username: '',
+      email: '',
+      password: '',
+  });
+  const [addTraineeLoading, setAddTraineeLoading] = useState(false);
+  const [addTraineeSuccess, setAddTraineeSuccess] = useState<string | null>(null);
+  const [addTraineeError, setAddTraineeError] = useState<string | null>(null);
 
   // --- State for Add Job Modal ---
   const [showAddJobModal, setShowAddJobModal] = useState(false);
@@ -246,8 +263,11 @@ export default function DashProfile() {
     }
 };
 
+<<<<<<< HEAD
 
   // --- Handler for Add Job form submission ---
+=======
+>>>>>>> 583223b010f0198c9a0bbd1f2396d617078c0e94
   const handleAddJobSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setAddJobLoading(true);
@@ -697,12 +717,17 @@ export default function DashProfile() {
              <div className="space-y-4">
               <h3 className="text-lg font-medium text-gray-900 dark:text-gray-200">Supervisor Actions</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button
-                  type="button"
-                  // onClick={handleAddTrainee} // Add relevant handler
-                  className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800"
-                >
-                  <HiOutlineUserGroup className="mr-2 -ml-1 h-5 w-5" />
+              <button
+                 type="button"
+                 onClick={() => {
+                     setShowAddTraineeModal(true);
+                     setAddTraineeError(null);
+                     setAddTraineeSuccess(null);
+                     setNewTraineeData({ username: '', email: '', password: '' }); 
+                 }}
+                 className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-700 dark:hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 dark:focus:ring-offset-gray-800"
+                 >
+                 <HiOutlineUserAdd className="mr-2 -ml-1 h-5 w-5" />
                   Add Trainee
                 </button>
               </div>
@@ -1039,6 +1064,59 @@ export default function DashProfile() {
                 </form>
             </div>
         </div>
+      )}
+      {/* --- Add Trainee Modal --- */}
+      {showAddTraineeModal && (
+                <div className="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white dark:bg-[rgb(22,33,62)] p-6 rounded-lg shadow-xl max-w-md w-full relative">
+                        {/* Close Button */}
+                        <button type="button" onClick={() => setShowAddTraineeModal(false)} className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none z-10" aria-label="Close modal">
+                            <HiX className="w-6 h-6" />
+                        </button>
+
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6 text-center">Add New Trainee</h3>
+
+                        <form className="space-y-4">
+                            <div>
+                                <label htmlFor="username" className="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    <HiOutlineUser className="w-5 h-5 mr-2" /> Trainee Username <span className="text-red-500 ml-1">*</span>
+                                </label>
+                                <input type="text" id="username" value={newTraineeData.username}  className="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter username" required />
+                            </div>
+
+                             <div>
+                                <label htmlFor="email" className="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    <HiOutlineMail className="w-5 h-5 mr-2" /> Trainee Email <span className="text-red-500 ml-1">*</span>
+                                </label>
+                                <input type="email" id="email" value={newTraineeData.email}  className="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter email" required />
+                            </div>
+
+                             <div>
+                                <label htmlFor="password" className="flex items-center mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    <HiOutlineLockClosed className="w-5 h-5 mr-2" /> Initial Password <span className="text-red-500 ml-1">*</span>
+                                </label>
+                                <input type="password" id="password" value={newTraineeData.password}  className="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter initial password" required />
+                                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">The trainee can change this later.</p>
+                            </div>
+
+                            {(addTraineeSuccess || addTraineeError) && (
+                            <div className="mt-4">
+                                {addTraineeSuccess && <div className="p-3 text-sm text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-900/30 rounded-lg text-center">{addTraineeSuccess}</div>}
+                                {addTraineeError && <div className="p-3 text-sm text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/30 rounded-lg text-center">{addTraineeError}</div>}
+                            </div>
+                            )}
+
+                            <div className="flex justify-end gap-4 pt-4 border-t border-gray-200 dark:border-gray-700 mt-6">
+                                <button type="button" onClick={() => setShowAddTraineeModal(false)} disabled={addTraineeLoading} className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 disabled:opacity-50">
+                                    Cancel
+                                </button>
+                                <button type="submit" disabled={addTraineeLoading} className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-teal-600 border border-transparent rounded-md shadow-sm hover:bg-teal-700 dark:bg-teal-700 dark:hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    {addTraineeLoading ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin"/> Adding...</>) : 'Add Trainee'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
       )}
     </div>
   );
