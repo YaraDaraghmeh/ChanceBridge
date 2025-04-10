@@ -10,7 +10,8 @@ export interface IJob extends Document {
   benefits?: string[];
   company: Types.ObjectId;
   applicants?: Types.ObjectId[] | IUser[]; 
-  supervisor?: Types.ObjectId;
+  supervisor?: Types.ObjectId | IUser | null; 
+  acceptedTrainees?: Types.ObjectId[] | IUser[]; 
   acceptedApplicants?: Types.ObjectId[] | IUser[];
   postedDate: Date;
   location?: string;
@@ -33,7 +34,8 @@ const JobSchema = new Schema<IJob>({
   benefits: [{ type: String }],
   company: { type: Schema.Types.ObjectId, ref: "User", required: true },
   applicants: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  supervisor: { type: Schema.Types.ObjectId, ref: "User" },
+  supervisor: { type: Schema.Types.ObjectId, ref: "User", default: null },
+  acceptedTrainees: [{ type: Schema.Types.ObjectId, ref: "User", default: [] }], 
   acceptedApplicants: [{ type: Schema.Types.ObjectId, ref: "User", default: [] }], 
   location: { type: String },
   postedDate: { type: Date, default: Date.now },
