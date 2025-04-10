@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
 import {
@@ -66,8 +66,14 @@ const sampleRecentUsers =  [
 ];
 
 
-
-const StatCard = ({ icon, title, value, href, isLoading }) => (
+interface IStatCard{
+  icon:ReactElement
+   title:string 
+   value:number|undefined
+    href:string|undefined
+ isLoading:boolean
+}
+const StatCard = ({ icon, title, value, href, isLoading }:IStatCard) => (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200">
         <div className="flex justify-between items-start mb-3">
             <span className="text-indigo-600 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900/30 p-2 rounded-lg">
@@ -142,8 +148,8 @@ function DashboardPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
                     {role === 'company' && (
                         <>
-                            <StatCard icon={<Users />} title="Total Applicants" value={stats.totalApplicants} isLoading={isLoading}/>
-                             <StatCard icon={<UserCheck />} title="Accepted" value={stats.totalAccepted} isLoading={isLoading}/>
+                            <StatCard icon={<Users />} title="Total Applicants" value={stats.totalApplicants} isLoading={isLoading} href={undefined}/>
+                             <StatCard icon={<UserCheck />} title="Accepted" value={stats.totalAccepted} isLoading={isLoading} href={undefined}/>
                              <StatCard icon={<Users />} title="Assigned Trainees" value={stats.assignedTrainees} href="/dashboard/manage-staff" isLoading={isLoading}/>
                              <StatCard icon={<UserCog />} title="Assigned Supervisors" value={stats.assignedSupervisors} href="/dashboard/manage-staff" isLoading={isLoading}/>
                         </>
@@ -151,7 +157,7 @@ function DashboardPage() {
                      {role === 'trainee' && (
                         <>
                             <StatCard icon={<FileText />} title="Applied Jobs" value={stats.appliedJobs} href="/dashboard/applications" isLoading={isLoading}/>
-                            <StatCard icon={<CheckCircle2 />} title="Accepted Offers" value={stats.acceptedOffers} isLoading={isLoading}/>
+                            <StatCard icon={<CheckCircle2 />} title="Accepted Offers" value={stats.acceptedOffers} isLoading={isLoading} href={''}/>
                             <StatCard icon={<Activity />} title="Active Accepted Jobs" value={stats.acceptedOffers} href="/dashboard/training" isLoading={isLoading}/>
                         </>
                     )}
@@ -160,7 +166,7 @@ function DashboardPage() {
                             <StatCard icon={<Briefcase />} title="Supervised Jobs" value={stats.supervisedJobsCount} href="/dashboard/training" isLoading={isLoading}/>
                             <StatCard icon={<Activity />} title="Active Supervised Jobs" value={stats.activeSupervisedJobsCount} href="/dashboard/training?status=active" isLoading={isLoading}/> 
                             <StatCard icon={<UserCheck />} title="Trainees in Jobs" value={stats.totalSupervisedTrainees} href="/dashboard/training" isLoading={isLoading}/>
-                             <StatCard icon={<Users />} title="Applicants to Supervised Jobs" value={stats.totalApplicantsToJobs} href="/dashboard/training" isLoading={isLoading}/>
+                             <StatCard icon={<Users />} title="Applicants to Supervised Jobs" value={stats.totalApplicants} href="/dashboard/training" isLoading={isLoading}/>
                         </>
                     )}
                      {role === 'admin' && (
