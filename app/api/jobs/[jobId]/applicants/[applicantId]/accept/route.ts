@@ -78,6 +78,51 @@ export async function PUT(request: NextRequest, { params }: { params: { jobId: s
         return NextResponse.json({ message: 'Applicant user not found.' }, { status: 404 });
     }
 
+        let successMessage = "";
+        let updateCompany = false;
+
+        if (applicant.role === 'supervisor') {
+            if (job.supervisor) {
+                if (job.supervisor.toString() === applicant._id.toString()) {
+                     await session.abortTransaction(); session.endSession();
+                     return NextResponse.json({ message: 'This supervisor is already assigned to this job.' }, { status: 400 });
+                } else {
+                     await session.abortTransaction(); session.endSession();
+                    return NextResponse.json({ message: 'Another supervisor is already assigned to this job.' }, { status: 400 });
+                }
+            }
+            job.supervisor = applicant._id;
+            console.log(`Assigned supervisor ${applicant.username} to job ${jobId}.`);
+            successMessage = `Supervisor ${applicant.username} assigned to job successfully!`;
+            companyUser.supervisors = companyUser.supervisors || [];
+            if (!companyUser.supervisors.some(sId => sId.equals(applicant._id))) {
+                companyUser.supervisors.push(applicant._id);
+                 updateCompany = true;
+                 console.log(`Added ${applicant.username} to company's supervisors list.`);
+            }
+
+        } else if (applicant.role === 'trainee') {
+            const alreadyAccepted = job.acceptedTrainees?.some(accId => accId.toString() === applicant._id.toString());
+            if (alreadyAccepted) {
+                await session.abortTransaction(); session.endSession();
+                return NextResponse.json({ message: 'This trainee is already accepted for this job.' }, { status: 400 });
+            }
+            job.acceptedTrainees = job.acceptedTrainees || [];
+            job.acceptedTrainees.push(applicant._id);
+            console.log(`Accepted trainee ${applicant.username} for job ${jobId}.`);
+            successMessage = `Trainee ${applicant.username} accepted successfully!`;
+
+            companyUser.trainees = companyUser.trainees || [];
+            if (!companyUser.trainees.some(tId => tId.equals(applicant._id))) {
+                companyUser.trainees.push(applicant._id);
+                 updateCompany = true;
+                 console.log(`Added ${applicant.username} to company's trainees list.`);
+             }
+        } else {
+            await session.abortTransaction(); session.endSession();
+            return NextResponse.json({ message: `Cannot accept user with role: ${applicant.role}` }, { status: 400 });
+        }
+
     // 6. Check if applied (Optional but good practice)
     const didApply = job.applicants?.some(appId => appId.toString() === applicant._id.toString());
     if (!didApply && job.applicants?.length > 0) { 
@@ -97,7 +142,6 @@ export async function PUT(request: NextRequest, { params }: { params: { jobId: s
     job.acceptedApplicants.push(applicant._id);
 
     // 9. Update Company: Add to trainees/supervisors list if not already present
-    let updateCompany = false;
     if (applicant.role === 'trainee') {
         companyUser.trainees = companyUser.trainees || [];
         if (!companyUser.trainees.some(tId => tId.equals(applicant._id))) {
