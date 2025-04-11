@@ -137,23 +137,22 @@
   }
   
   /* Additional global styles */
-  :global(.font-tilt-neon) {
+   .fontFix :global(.font-tilt-neon) {
     font-family: "Tilt Neon", sans-serif;
   }
   
-  :global(.font-nunito) {
+  .font-nunito {
     font-family: "Nunito", sans-serif;
   }
   
-  :global(.no-scrollbar) {
+  .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
   
-  :global(.no-scrollbar::-webkit-scrollbar) {
+  .no-scrollbar::-webkit-scrollbar {
     display: none;
-  }
-  .statsCard {
+  }tatsCard {
     transition: all 0.3s ease;
   }
   
