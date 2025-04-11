@@ -152,7 +152,8 @@
   
   .no-scrollbar::-webkit-scrollbar {
     display: none;
-  }tatsCard {
+  }
+.tatsCard {
     transition: all 0.3s ease;
   }
   
